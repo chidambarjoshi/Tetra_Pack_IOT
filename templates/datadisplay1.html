@@ -1,0 +1,46 @@
+{% if uname %}
+    {% include 'admin_base.html'%}
+    {% else %}
+    {% include 'base1.html'%}
+{% endif %}
+{%block  content%}
+   {% load static  %}
+ <link rel="stylesheet" type="text/css" href="{% static 'css/datadisp.css' %}">
+    <div class="search-on">
+    <div>
+<center>
+{% if messages %}
+<div >
+    {% for message in messages %}
+	<div{% if message.tags %} class="{{ message.tags }}"{% endif %}><h1>{{ message }}</h1></div>
+    {% endfor %}
+</div>
+
+{
+   {%else%}
+
+		<h1> Product Details</h1>
+		<table border="2">
+			<tr>
+			<th>ID</th>
+			<th>MFD</th>
+			<th>Temprature</th>
+			<th>Humidity</th>
+			<th>Last Update</th>
+		</tr>
+
+		<tr>
+			<td>{{tem_data.id}}</td>
+			<td>{{disp_data.mfd}}</td>
+			<td>{{tem_data.temp}}</td>
+			<td>{{tem_data.humi}}</td>
+			<td>{{tem_data.Lastdate}}</td>
+		</tr>
+
+		
+		</table>
+		{% endif %}
+	</center>
+</div>
+    </div>
+{%endblock%}

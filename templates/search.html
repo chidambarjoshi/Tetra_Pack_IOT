@@ -1,0 +1,25 @@
+{% if uname %}
+    {% include 'admin_base.html'%}
+    {% else %}
+    {% include 'base1.html'%}
+{% endif %}
+{%block  content%}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}">
+
+
+
+    <div class="search-on">
+
+        <form method="post">
+             <div class="illustration"><i class="icon ion-ios-information"></i></div>
+           {% csrf_token %}
+           <div class="form-group">
+               <input class="form-control"type="text" placeholder="Enter Product Id" name="id" required></div>
+             <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit">Submit</button></div>
+       </form>
+
+    </div>
+
+{%endblock%}

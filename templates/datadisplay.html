@@ -1,0 +1,31 @@
+{% extends 'admin_base.html'%}
+{%block  content%}
+      {% load static  %}
+ <link rel="stylesheet" type="text/css" href="{% static 'css/datadisp.css' %}">
+    <div class="search-on">
+    <div>
+	<center>
+		<h1> Recent Packet Data</h1>
+		<table border="2" cellpadding="5">
+			<tr>
+			<th>ID</th>
+			<th>MFD</th>
+			<th>Temprature</th>
+			<th>Humidity</th>
+			<th>Last Update</th>
+		</tr>
+		{%for d in disp_data%}
+		<tr>
+			<td>{{d.id}}</td>
+			<td>{{d.mfd}}</td>
+			<td>{{d.temp}}</td>	
+			<td>{{d.humi}}</td>
+			<td>{{d.Lastupdate}}</td>
+		</tr>
+		{%endfor%}
+		</table>
+	</center>
+    </div>
+    </div>
+	{%endblock%}
+
