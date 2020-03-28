@@ -1,15 +1,14 @@
-{% if uname %}
-    {% include 'admin_base.html'%}
-    {% else %}
-    {% include 'base1.html'%}
-{% endif %}
+
+{% extends 'base1.html'%}
 {%block  content%}
 {% load static  %}
  <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
-<div class="search-on">
-<div>
-<h4> <marquee> Food safety is our motto </marquee> </h4>
 
-</div>
-</div>
+    <div class="login-dark">
+        <div>
+            <h4> <marquee> Food safety is our motto </marquee> </h4>
+
+        </div>
+    </div>
+
 {%endblock%}

@@ -1,8 +1,4 @@
-{% if uname %}
-    {% include 'admin_base.html'%}
-    {% else %}
-    {% include 'base1.html'%}
-{% endif %}
+{% include 'base1.html'%}
 {%block  content%}
    {% load static  %}
  <link rel="stylesheet" type="text/css" href="{% static 'css/datadisp.css' %}">
