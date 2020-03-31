@@ -31,7 +31,7 @@ SECRET_KEY = '%gbs%a@e0txv9%fgk@-3+g&+g4&@br%o@lxut^8vs#7dx8^*ah'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['tetrapack.herokuapp.com',]
 
 
 # Application definition
