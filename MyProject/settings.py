@@ -13,14 +13,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import mimetypes
 
-
-
-
 mimetypes.add_type("text/css", ".css", True)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -32,8 +28,7 @@ SECRET_KEY = '%gbs%a@e0txv9%fgk@-3+g&+g4&@br%o@lxut^8vs#7dx8^*ah'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*',
-    'tetrapack.herokuapp.com']
-
+                 'tetrapack.herokuapp.com']
 
 # Application definition
 
@@ -51,7 +46,7 @@ MIDDLEWARE = [
 
     'django.middleware.security.SecurityMiddleware',
 
-'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -81,7 +76,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'MyProject.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 DATABASES = {
@@ -90,9 +84,7 @@ DATABASES = {
     }
 }
 
-
-db_name='mongodb://chidu:chidu@cluster0-shard-00-00-ccngx.mongodb.net:27017,cluster0-shard-00-01-ccngx.mongodb.net:27017,cluster0-shard-00-02-ccngx.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority'
-
+db_name = 'mongodb://chidu:chidu@cluster0-shard-00-00-ccngx.mongodb.net:27017,cluster0-shard-00-01-ccngx.mongodb.net:27017,cluster0-shard-00-02-ccngx.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -112,7 +104,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -126,13 +117,12 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 
-PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
-STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'staticfiles')
+PROJECT_ROOT = os.path.join(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Extra lookup directories for collectstatic to find static files
@@ -143,5 +133,6 @@ STATICFILES_DIRS = (
 #  Add configuration for static files storage using whitenoise
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 import dj_database_url
-prod_db  =  dj_database_url.config(conn_max_age=500)
+
+prod_db = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
