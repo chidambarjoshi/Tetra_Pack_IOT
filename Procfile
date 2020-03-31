@@ -1,1 +1,1 @@
-web: gunicorn tetrapack.wsgi --log-file -
+web: gunicorn MyProject.wsgi --log-file -
