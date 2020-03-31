@@ -15,7 +15,7 @@ import mimetypes
 import tertaapp
 
 import django_heroku
-django_heroku.settings(locals())
+
 mimetypes.add_type("text/css", ".css", True)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
