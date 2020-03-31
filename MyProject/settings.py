@@ -82,11 +82,7 @@ WSGI_APPLICATION = 'MyProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE':'',
-    }
-}
+
 db_name='mongodb://chidu:chidu@cluster0-shard-00-00-ccngx.mongodb.net:27017,cluster0-shard-00-01-ccngx.mongodb.net:27017,cluster0-shard-00-02-ccngx.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority'
 
 
