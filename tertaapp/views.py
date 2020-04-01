@@ -106,5 +106,5 @@ def search_pro(request):
         id = request.POST.get('id')
         return HttpResponseRedirect('/datadisplay1/' + id)
     else:
-        context = {' uname ': uname}
+        context = {'uname': uname}
         return render(request, 'search.html', context)
