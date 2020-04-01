@@ -99,8 +99,12 @@ def logout(request):
 
 
 def search_pro(request):
+    uname = False
+    if request.COOKIES.get('username'):
+        uname = True
     if request.method == 'POST':
         id = request.POST.get('id')
         return HttpResponseRedirect('/datadisplay1/' + id)
     else:
-        return render(request, 'search.html', {})
+        context = {' uname ': name}
+        return render(request, 'search.html', context)
