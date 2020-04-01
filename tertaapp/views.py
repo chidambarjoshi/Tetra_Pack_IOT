@@ -67,9 +67,6 @@ def login(request):
         name = request.POST.get('name')
         password = request.POST.get('password')
         if name == 'admin' and password == 'admin':
-
-
-
             response = HttpResponseRedirect('/admin_dash')
             response.set_cookie('username', name,420)
             return response
@@ -83,7 +80,7 @@ def login(request):
         context = {'uname': uname}
         return render(request, 'home.html', context)
 
-    return render(request, 'Login.html', {})
+    return render(request, 'login.html', {})
 
 
 def admin_dash(request):
