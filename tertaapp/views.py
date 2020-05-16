@@ -59,7 +59,7 @@ def getdata1(request, pid):
         context = {'disp_data': [], 'tem_data': [], 'uname': uname}
         messages.add_message(request, messages.INFO, 'Product Not Found')
 
-    return render(request, 'datadisplay1.html', context)
+    return render(request, 'pro_details.html', context)
 
 
 def login(request):
@@ -68,7 +68,7 @@ def login(request):
         password = request.POST.get('password')
         if name == 'admin' and password == 'admin':
             response = HttpResponseRedirect('/admin_dash')
-            response.set_cookie('username', name,420)
+            response.set_cookie('username', name, 420)
             return response
         else:
 
@@ -108,3 +108,19 @@ def search_pro(request):
     else:
         context = {'uname': uname}
         return render(request, 'search.html', context)
+
+
+def getresult(request, pid):
+    datatemp = db.mfdtemp.find_one({'id': pid})
+    datatemp1 = db.tempdata.find_one({'id': pid})
+    uname = False
+    if request.COOKIES.get('username'):
+        uname = True
+
+    if datatemp:
+        context = {'disp_data': datatemp, 'tem_data': datatemp1, 'uname': uname}
+    else:
+        context = {'disp_data': [], 'tem_data': [], 'uname': uname}
+        messages.add_message(request, messages.INFO, 'Product Not Found')
+
+    return render(request, 'datadisplay1.html', context)
