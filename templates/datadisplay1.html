@@ -1,4 +1,4 @@
-<title>Product Details</title>{% extends 'base1.html'%}
+{% extends 'base1.html'%}
 {%block  content%}
    {% load static  %}
 <style>
@@ -41,17 +41,25 @@
 			<tr>
 			<th>ID</th>
 			<th>MFD</th>
-			<th>Temprature</th>
-			<th>Humidity</th>
+			<th>Product Quality</th>
 			<th>Last Update</th>
+			<th>Selling status</th>
 		</tr>
 
-		<tr>
-			<td>{{tem_data.id}}</td>
-			<td>{{disp_data.mfd}}</td>
-			<td>{{tem_data.temp}}</td>
-			<td>{{tem_data.humi}}</td>
-			<td>{{tem_data.Lastdate}}</td>
+			<tr>
+			<td>{{data.id}}</td>
+			<td>{{data.mfd}}</td>
+			{%if data.phvalue > 6.2 and data.phvalue < 6.6%}
+			<td>Good</td>
+			{%else%}
+			<td>Bad</td>
+			{%endif%}
+			<td>{{data.Lastupdate}}</td>
+			{% if data.selling_status == "1" %}
+			<td>Sold</td>
+			{%else%}
+			<td>Not Sold</td>
+			{%endif%}
 		</tr>
 
 		

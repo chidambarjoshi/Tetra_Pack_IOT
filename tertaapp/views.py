@@ -32,12 +32,12 @@ def getdata(request):
         data = []
         datatemp = db.mfdtemp.find()
         for x in datatemp:
-            d1 = db.tempdata.find_one({'id': x['id']})
+            d1 = db.phdata.find_one({'id': x['id']})
             obj = {'id': x['id'],
                    'mfd': x['mfd'],
-                   'temp': d1['temp'],
-                   'humi': d1['humi'],
-                   'Lastupdate': d1['Lastdate']
+                   'phvalue': float(d1['phvalue']),
+                   'Lastupdate': d1['Lastupdate'],
+                   'selling_status':d1['selling_status'],
                    }
             data.append(obj)
         context = {'disp_data': data,'uname':uname}
@@ -47,19 +47,25 @@ def getdata(request):
 
 
 def getdata1(request, pid):
-    datatemp = db.mfdtemp.find_one({'id': pid})
-    datatemp1 = db.tempdata.find_one({'id': pid})
+    x= db.mfdtemp.find_one({'id': pid})
+    d1= db.phdata.find_one({'id': pid})
     uname = False
     if request.COOKIES.get('username'):
         uname = True
 
-    if datatemp:
-        context = {'disp_data': datatemp, 'tem_data': datatemp1, 'uname': uname}
+    if x:
+        obj = {'id': x['id'],
+               'mfd': x['mfd'],
+               'phvalue': float(d1['phvalue']),
+               'Lastupdate': d1['Lastupdate'],
+               'selling_status': d1['selling_status'],
+               }
+        context = {'data': obj,  'uname': uname}
     else:
-        context = {'disp_data': [], 'tem_data': [], 'uname': uname}
+        context = {'data': [],  'uname': uname}
         messages.add_message(request, messages.INFO, 'Product Not Found')
 
-    return render(request, 'pro_details.html', context)
+    return render(request, 'datadisplay1.html', context)
 
 
 def login(request):

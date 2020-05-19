@@ -30,17 +30,26 @@
 			<tr>
 			<th>ID</th>
 			<th>MFD</th>
-			<th>Temprature</th>
-			<th>Humidity</th>
+			<th>Product Quality</th>
 			<th>Last Update</th>
+			<th>Selling Status</th>
 		</tr>
 		{%for d in disp_data%}
 		<tr>
+
 			<td>{{d.id}}</td>
 			<td>{{d.mfd}}</td>
-			<td>{{d.temp}}</td>	
-			<td>{{d.humi}}</td>
+			{%if d.phvalue > 6.2 and d.phvalue < 6.6%}
+			<td>Good</td>
+			{%else%}
+			<td>Bad</td>
+			{%endif%}
 			<td>{{d.Lastupdate}}</td>
+			{% if d.selling_status == "1" %}
+			<td>Sold</td>
+			{%else%}
+			<td>Not Sold</td>
+			{%endif%}
 		</tr>
 		{%endfor%}
 		</table>
