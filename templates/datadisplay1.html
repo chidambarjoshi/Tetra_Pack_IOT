@@ -43,7 +43,7 @@
 			<th>MFD</th>
 			<th>Product Quality</th>
 			<th>Last Update</th>
-			<th>Selling status</th>
+
 		</tr>
 
 			<tr>
@@ -55,11 +55,7 @@
 			<td>Bad</td>
 			{%endif%}
 			<td>{{data.Lastupdate}}</td>
-			{% if data.selling_status == "1" %}
-			<td>Sold</td>
-			{%else%}
-			<td>Not Sold</td>
-			{%endif%}
+
 		</tr>
 
 		
