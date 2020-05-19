@@ -65,7 +65,7 @@ def getdata1(request, pid):
         context = {'data': [],  'uname': uname}
         messages.add_message(request, messages.INFO, 'Product Not Found')
 
-    return render(request, 'datadisplay1.html', context)
+    return render(request, 'datadisp.html', context)
 
 
 def login(request):
@@ -129,4 +129,4 @@ def getresult(request, pid):
         context = {'disp_data': [], 'tem_data': [], 'uname': uname}
         messages.add_message(request, messages.INFO, 'Product Not Found')
 
-    return render(request, 'datadisplay1.html', context)
+    return render(request, 'datadisp.html', context)
