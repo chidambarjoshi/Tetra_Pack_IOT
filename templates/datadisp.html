@@ -1,31 +1,33 @@
-{% extends 'base1.html'%}
+{% extends 'base.html'%}
 {%block  content%}
    {% load static  %}
 
 
 
-    <div class ="search-on">
-        <div>
+
 <center>
 {% if messages %}
-<div >
+<div  style="background-color: #1e2833;max-width:400px;box-shadow:3px 3px 4px rgba(0,0,0,0.2);color:white;
+ transform:translate(-50%, 50%);
+  position:relative;
+  top:30%;
+  left:15%;">
     {% for message in messages %}
-	<div>{% if message.tags %} class="{{ message.tags }}"{% endif %}><h1>{{ message }}</h1></div>
+	<div{% if message.tags %} class="{{ message.tags }}"{% endif %}><h1>{{ message }}</h1></div>
     {% endfor %}
 </div>
 
-{
+
    {%else%}
 
 	
 <div class="float-lg-left" style="background-color:#1e2833;  color:#fff;
-  box-shadow:3px 3px 4px rgba(0,0,0,0.2);max-width:400px;
-            width:100%; top: 60%">MFD: {{data.mfd}}</div>
+  box-shadow:3px 3px 4px rgba(0,0,0,0.2);width:400px;
+             top: 60%">MFD: {{data.mfd}}</div>
 <div class="float-lg-right"style="background-color:#1e2833;  color:#fff;
-  box-shadow:3px 3px 4px rgba(0,0,0,0.2);max-width:400px;
-            width:100%; top:60%">Last Update : {{data.Lastupdate}}</div>
+  box-shadow:3px 3px 4px rgba(0,0,0,0.2);width:400px;
+             top:60%">Last Update : {{data.Lastupdate}}</div>
     <br><br>
-    <br>
  {%if data.phvalue > 6.2 and data.phvalue < 6.6%}
     <div class="center-block" style="background-color: green;max-width:400px;box-shadow:3px 3px 4px rgba(0,0,0,0.2)">MILK is :Good</div>
 			{%else%}
@@ -34,7 +36,7 @@
 {%endif%}
     </center>
 
-    </div>
-    </div>
+
+
 
 {%endblock%}
