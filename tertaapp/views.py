@@ -22,7 +22,7 @@ def home(request):
     if request.COOKIES.get('username'):
         uname = True
     context = {'uname': uname}
-    return render(request, 'home.html', context)
+    return render(request, 'home1.html', context)
 
 def home_user(request):
     return render(request, 'home_user.html')
