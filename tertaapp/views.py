@@ -109,12 +109,16 @@ def search_pro(request):
     uname = False
     if request.COOKIES.get('username'):
         uname = True
-    if request.method == 'POST':
-        id = request.POST.get('id')
-        return HttpResponseRedirect('/datadisplay1/' + id)
+        if request.method == 'POST':
+
+            id = request.POST.get('id')
+            return HttpResponseRedirect('/datadisplay1/' + id)
+        else:
+
+            context = {'uname': uname}
+            return render(request, 'search.html', context)
     else:
-        context = {'uname': uname}
-        return render(request, 'search.html', context)
+        return render(request, 'login.html', {})
 
 
 def getresult(request, pid):
