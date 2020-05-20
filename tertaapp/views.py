@@ -24,7 +24,8 @@ def home(request):
     context = {'uname': uname}
     return render(request, 'home.html', context)
 
-
+def home_user(request):
+    return render(request, 'home_user.html')
 
 def getdata(request):
     if request.COOKIES.get('username'):
@@ -79,7 +80,7 @@ def login(request):
         else:
 
             messages.add_message(request, messages.INFO, 'Invalid Credentials')
-            return render(request, 'Login.html', {})
+            return render(request, 'login.html', {})
     uname = False
     if request.COOKIES.get('username'):
         uname=True
