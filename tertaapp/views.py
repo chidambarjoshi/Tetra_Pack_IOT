@@ -69,6 +69,28 @@ def getdata1(request, pid):
     return render(request, 'datadisp.html', context)
 
 
+
+def getdata_user(request, pid):
+    x= db.mfdtemp.find_one({'id': pid})
+    d1= db.phdata.find_one({'id': pid})
+    uname = False
+    if request.COOKIES.get('username'):
+        uname = True
+
+    if x:
+        obj = {'id': x['id'],
+               'mfd': x['mfd'],
+               'phvalue': float(d1['phvalue']),
+               'Lastupdate': d1['Lastupdate'],
+               'selling_status': d1['selling_status'],
+               }
+        context = {'data': obj,  'uname': uname}
+    else:
+        context = {'data': [],  'uname': uname}
+        messages.add_message(request, messages.INFO, 'Product Not Found')
+
+    return render(request, 'datadisp_user.html', context)
+
 def login(request):
     if request.method == 'POST':
         name = request.POST.get('name')
