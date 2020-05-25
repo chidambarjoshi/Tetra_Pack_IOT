@@ -22,10 +22,19 @@ def home(request):
     if request.COOKIES.get('username'):
         uname = True
     context = {'uname': uname}
-    return render(request, 'home1.html', context)
+    return render(request, 'home_admin.html', context)
+
+def about(request):
+    uname = False
+    if request.COOKIES.get('username'):
+        uname = True
+    context = {'uname': uname}
+    return render(request, 'about.html', context)
+def about_user(request):
+    return render(request, 'about_user.html')
 
 def home_user(request):
-    return render(request, 'home_user.html')
+    return render(request, 'home1.html')
 
 def getdata(request):
     if request.COOKIES.get('username'):
@@ -96,8 +105,8 @@ def login(request):
         name = request.POST.get('name')
         password = request.POST.get('password')
         if name == 'admin' and password == 'admin':
-            response = HttpResponseRedirect('/admin_dash')
-            response.set_cookie('username', name, 420)
+            response = HttpResponseRedirect('/home')
+            response.set_cookie('username', name, 300)
             return response
         else:
 

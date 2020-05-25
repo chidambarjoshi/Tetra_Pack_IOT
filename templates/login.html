@@ -65,8 +65,10 @@
     <div class="login-dark">
         <form method="post">
             {% csrf_token %}
-            <h4 class="sr-only">Login Form</h4>
-            <div class="illustration"><ion-icon name="lock-closed-outline"></ion-icon></div>
+            <center>
+            <h4 >Admin Login </h4></center>
+            <br>
+
             {% if messages %}
              {% for message in messages %}
                 <div class="alert alert-warning">
