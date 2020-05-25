@@ -3,9 +3,9 @@ from . import views
 
 
 urlpatterns = [
-	path('home_user',views.home_user,name="home_user"),
-	path('',views.home,name="home"),
-	path('home',views.home,name="home"),
+	path('',views.home_user,name="home-user"),
+	path('home-user',views.home_user,name="home-user"),
+	path('user-admin',views.home,name="user-admin"),
 	path('datadisplay',views.getdata,name="datadisplay"),
 	path('datadisplay1/<pid>',views.getdata1,name="datadisplay1"),
 	path('datadisplay_user/<pid>',views.getdata_user,name="datadisplay_user"),
