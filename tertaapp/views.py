@@ -124,7 +124,7 @@ def login(request):
     if request.COOKIES.get('username'):
         uname=True
         context = {'uname': uname}
-        return render(request, 'home.html', context)
+        return render(request, 'home_admin.html', context)
 
     return render(request, 'login.html', {})
 
