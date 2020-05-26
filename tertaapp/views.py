@@ -65,34 +65,33 @@ def getdata(request):
 
 
 def getdata1(request, pid):
-    x= db.mfdtemp.find_one({'id': pid})
-    d1= db.phdata.find_one({'id': pid})
     uname = False
     if request.COOKIES.get('username'):
+        x= db.mfdtemp.find_one({'id': pid})
+        d1= db.phdata.find_one({'id': pid})
+
         uname = True
 
-    if x:
-        obj = {'id': x['id'],
+        if x:
+            obj = {'id': x['id'],
                'mfd': x['mfd'],
                'phvalue': float(d1['phvalue']),
                'Lastupdate': d1['Lastupdate'],
                'selling_status': d1['selling_status'],
                }
-        context = {'data': obj,  'uname': uname}
-    else:
-        context = {'data': [],  'uname': uname}
-        messages.add_message(request, messages.INFO, 'Product Not Found')
+            context = {'data': obj,  'uname': uname}
+        else:
+            context = {'data': [],  'uname': uname}
+            messages.add_message(request, messages.INFO, 'Product Not Found')
 
-    return render(request, 'datadisp.html', context)
+        return render(request, 'datadisp.html', context)
+    else:
+        return HttpResponseRedirect('/login')
 
 
 def getdata_user(request, pid):
     x= db.mfdtemp.find_one({'id': pid})
     d1= db.phdata.find_one({'id': pid})
-    uname = False
-    if request.COOKIES.get('username'):
-        uname = True
-
     if x:
         obj = {'id': x['id'],
                'mfd': x['mfd'],
@@ -100,9 +99,9 @@ def getdata_user(request, pid):
                'Lastupdate': d1['Lastupdate'],
                'selling_status': d1['selling_status'],
                }
-        context = {'data': obj,  'uname': uname}
+        context = {'data': obj}
     else:
-        context = {'data': [],  'uname': uname}
+        context = {'data': []}
         messages.add_message(request, messages.INFO, 'Product Not Found')
 
     return render(request, 'datadisp_user.html', context)
@@ -129,13 +128,7 @@ def login(request):
     return render(request, 'login.html', {})
 
 
-def admin_dash(request):
-    if request.COOKIES.get('username'):
-        name = request.COOKIES.get('username')
-        context = {' uname ': name}
-        return render(request, 'admin_dash.html', context)
-    else:
-        return HttpResponseRedirect('/login')
+
 
 
 def logout(request):
@@ -160,20 +153,7 @@ def search_pro(request):
         return render(request, 'login.html', {})
 
 
-def getresult(request, pid):
-    datatemp = db.mfdtemp.find_one({'id': pid})
-    datatemp1 = db.tempdata.find_one({'id': pid})
-    uname = False
-    if request.COOKIES.get('username'):
-        uname = True
 
-    if datatemp:
-        context = {'disp_data': datatemp, 'tem_data': datatemp1, 'uname': uname}
-    else:
-        context = {'disp_data': [], 'tem_data': [], 'uname': uname}
-        messages.add_message(request, messages.INFO, 'Product Not Found')
-
-    return render(request, 'datadisp.html', context)
 
 
 def gen_qrcode(request,pid):

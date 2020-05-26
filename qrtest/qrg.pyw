@@ -10,7 +10,7 @@ def genrator(*args):
         username.delete(first=0,last=100)
     else:
         x='qrcodes/'+qrid+'.png'
-        z='''www.linkedin.com/in/chidambar-joshi'''
+        z='https://tetrapack.herokuapp.com/datadisplay_user/'+qrid
         srt='https://herokudjangoappa.herokuapp.com/id='+qrid
         #print(srt)
         qr = qrcode.QRCode(
