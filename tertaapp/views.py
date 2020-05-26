@@ -113,7 +113,7 @@ def login(request):
         name = request.POST.get('name')
         password = request.POST.get('password')
         if name == 'admin' and password == 'admin':
-            response = HttpResponseRedirect('/home')
+            response = HttpResponseRedirect('/home_admin')
             response.set_cookie('username', name, 300)
             return response
         else:
