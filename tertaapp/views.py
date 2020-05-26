@@ -2,6 +2,9 @@ from django.shortcuts import render, HttpResponseRedirect
 import pymongo
 from MyProject.settings import db_name
 from django.contrib import messages
+import subprocess
+import qrcode
+
 
 
 def db_connect():
@@ -24,17 +27,22 @@ def home(request):
     context = {'uname': uname}
     return render(request, 'home_admin.html', context)
 
+
 def about(request):
     uname = False
     if request.COOKIES.get('username'):
         uname = True
     context = {'uname': uname}
     return render(request, 'about.html', context)
+
+
 def about_user(request):
     return render(request, 'about_user.html')
 
+
 def home_user(request):
     return render(request, 'home1.html')
+
 
 def getdata(request):
     if request.COOKIES.get('username'):
@@ -78,7 +86,6 @@ def getdata1(request, pid):
     return render(request, 'datadisp.html', context)
 
 
-
 def getdata_user(request, pid):
     x= db.mfdtemp.find_one({'id': pid})
     d1= db.phdata.find_one({'id': pid})
@@ -99,6 +106,7 @@ def getdata_user(request, pid):
         messages.add_message(request, messages.INFO, 'Product Not Found')
 
     return render(request, 'datadisp_user.html', context)
+
 
 def login(request):
     if request.method == 'POST':
@@ -166,3 +174,10 @@ def getresult(request, pid):
         messages.add_message(request, messages.INFO, 'Product Not Found')
 
     return render(request, 'datadisp.html', context)
+
+
+def gen_qrcode(request,pid):
+    x='python qrcod.py '+pid
+    subprocess.Popen(['python', 'qrcod.py' , pid],stdout = subprocess.PIPE)
+
+
