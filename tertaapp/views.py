@@ -3,7 +3,7 @@ import pymongo
 from MyProject.settings import db_name
 from django.contrib import messages
 import subprocess
-import qrcode
+#import qrcode
 
 
 
