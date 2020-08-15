@@ -1,0 +1,96 @@
+virtualenv django_env
+
+$ source django_env/bin/activate
+
+$ pip install django
+
+$ django-admin.py startproject djangoherokuapp
+
+$  cd djangoherokuapp
+
+
+$  python manage.py startapp herokuapp
+
+
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'herokuapp',
+]
+
+
+$  python manage.py migrate
+
+
+
+$ python manage.py runserver
+
+
+
+$ heroku login /// login with email id and password
+
+
+$ touch Procfile
+web: gunicorn <Project Name>.wsgi --log-file -
+
+$runtime.txt > python-2.7.12
+
+$ pip install gunicorn dj-database-url whitenoise psycopg2
+
+$ pip freeze > requirements.txt
+
+above all file should be created in the folder where manage.py exists
+make the bellow cahngaes to settings.py 
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.11/howto/static-files/
+PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
+STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_URL = '/static/'
+
+# Extra lookup directories for collectstatic to find static files
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
+
+#  Add configuration for static files storage using whitenoise
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+
+MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+ALLOWED_HOSTS = ['herokudjangoapp.herokuapp.com','*']
+
+
+$ heroku create <Project name>
+$ git init
+
+$ heroku git:remote -a <Project Name>
+
+$ git add .
+
+$ git commit -m "Initial commit"
+
+$ git push heroku master
+
+$ heroku config:set     DISABLE_COLLECTSTATIC=1 
+
+$ git push heroku master
+
+$ heroku run python manage.py migrate
+
