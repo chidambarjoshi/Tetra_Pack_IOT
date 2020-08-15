@@ -11,25 +11,19 @@ def genrator(*args):
     else:
         x='qrcodes/'+qrid+'.png'
         z='https://tetrapack.herokuapp.com/datadisplay_user/'+qrid
-        srt='https://herokudjangoappa.herokuapp.com/id='+qrid
-        #print(srt)
         qr = qrcode.QRCode(
                 version=1,
                 error_correction=qrcode.constants.ERROR_CORRECT_L,
                 box_size=10,
                 border=4,
-)
+                    )
         qr.add_data(z)
         qr.make(fit=True)
 
         img = qr.make_image(fill_color="black", back_color="white")
-        
-        #img = qrcode.make('https://herokudjangoappa.herokuapp.com/')
-        #img = qr.make_image(fill_color="blue", back_color="white")
         img.save(x)
         messagebox.showinfo("MESSAGE","QR code is Generated")
         
-        #print("QR generated")
     
     
 
@@ -49,7 +43,6 @@ ttk.Label(mainframe, text="Packet ID").grid(column=1, row=4)
 username.grid(column=2, row=4)
 
 x=ttk.Button(mainframe, text="Genrate QRcode", command=genrator)
-#x.place(anchor=CENTER)
 x.grid(row=6, column=0, columnspan=3)
 
 for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)

@@ -2,8 +2,8 @@ from django.shortcuts import render, HttpResponseRedirect
 import pymongo
 from MyProject.settings import db_name
 from django.contrib import messages
-import subprocess
-#import qrcode
+
+
 
 
 
@@ -156,8 +156,6 @@ def search_pro(request):
 
 
 
-def gen_qrcode(request,pid):
-    x='python qrcod.py '+pid
-    subprocess.Popen(['python', 'qrcod.py' , pid],stdout = subprocess.PIPE)
+
 
 
