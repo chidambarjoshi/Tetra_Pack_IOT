@@ -88,7 +88,7 @@ $ git commit -m "Initial commit"
 
 $ git push heroku master
 
-$ heroku config:set     DISABLE_COLLECTSTATIC=1 
+$ heroku config:set   DISABLE_COLLECTSTATIC=1
 
 $ git push heroku master
 
