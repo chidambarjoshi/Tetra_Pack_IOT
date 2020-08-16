@@ -13,7 +13,7 @@
   top:30%;
   left:15%;">
     {% for message in messages %}
-	<div{% if message.tags %} class="{{ message.tags }}"{% endif %}><h1>{{ message }}</h1></div>
+	<div>{% if message.tags %} class="{{ message.tags }}"{% endif %}><h1>{{ message }}</h1></div>
     {% endfor %}
 </div>
 
@@ -24,11 +24,11 @@
 <div class="float-lg-left" style="background-color:#1e2833;  color:#fff;
   box-shadow:3px 3px 4px rgba(0,0,0,0.2);width:400px;
              top: 60%">MFD: {{data.mfd}}</div>
-<div class="float-lg-right"style="background-color:#1e2833;  color:#fff;
+<div class="float-lg-right" style="background-color:#1e2833;  color:#fff;
   box-shadow:3px 3px 4px rgba(0,0,0,0.2);width:400px;
              top:60%">Last Update : {{data.Lastupdate}}</div>
     <br><br>
- {%if data.phvalue > 6.2 and data.phvalue < 6.6%}
+ {%if data.phvalue > 6.2 and data.phvalue < 6.9%}
     <div class="center-block" style="background-color: green;max-width:400px;box-shadow:3px 3px 4px rgba(0,0,0,0.2)">MILK is :Good</div>
 			{%else%}
 			<div class="center-block" style="background-color: red;max-width:400px;box-shadow:3px 3px 4px rgba(0,0,0,0.2)">MILK is :Bad
